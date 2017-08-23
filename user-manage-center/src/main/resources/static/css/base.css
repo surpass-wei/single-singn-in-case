@@ -1,0 +1,32 @@
+.head {
+    height: 40px;
+    background: lightskyblue;
+    font-size: 25px;
+    text-align: center;
+}
+
+.content {
+    margin: 3% 2%;
+}
+
+.hint {
+    color: darkgray;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.error {
+    color: #F44336;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.tb-opt-btn {
+    margin-right: 6px;
+}
+
+.tb {
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}

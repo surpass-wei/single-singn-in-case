@@ -1,0 +1,25 @@
+server:
+  port: 9091
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/user_manage_center?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  jackson:
+    serialization: true
+  thymeleaf:
+    cache: false
+
+default:
+  password: 123456
+security:
+  user:
+    name: admin
+    password: admin
+    role: admin

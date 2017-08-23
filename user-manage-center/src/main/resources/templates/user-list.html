@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout-page">
+<head>
+    <link rel="stylesheet" th:href="@{/vendor/bootstrap-table/css/bootstrap-table.min.css}"/>
+</head>
+<body>
+<section layout:fragment="content">
+    <div id="content" class="content">
+        <div class="tb">
+            <div id="toolbar">
+                <div class="form-inline" role="form">
+                    <button id="add-user" class="btn btn-success" data-toggle="modal" data-target="#add-user-modal">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        添加
+                    </button>
+                </div>
+            </div>
+            <table id="users-table"></table>
+        </div>
+    </div>
+
+    <div id="add-user-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
+                    </button>
+                    <h4 class="modal-title">添加用户</h4>
+                </div>
+                <form id="user-form">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="username" class="control-label">用户名:</label>
+                            <input class="form-control" id="username" required="required" minlength="4" maxlength="15"/>
+                            <p class="hint">提示：字母开头，由4~15个字母、下划线或数字组成</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="nickname" class="control-label">昵称:</label>
+                            <input class="form-control" id="nickname" required="required" minlength="2" maxlength="8"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button id="add-user-submit" type="button" class="btn btn-primary">提交</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</section>
+<div layout:fragment="child-js" th:remove="tag">
+    <!--vendor with local-->
+    <script th:src="@{/vendor/bootstrap-table/js/bootstrap-table.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap-table/local/bootstrap-table-zh-CN.min.js}"></script>
+    <!--custom-->
+    <script th:src="@{/js/user-list.js}"></script>
+</div>
+</body>
+</html>

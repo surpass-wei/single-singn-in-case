@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>后台管理</title>
+    <!--公共CSS start-->
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{css/base.css}"/>
+    <!--公共CSS end-->
+</head>
+<body>
+<header class="">
+</header>
+<section layout:fragment="content">
+</section>
+<footer>
+    <p align="center">@ 2017</p>
+</footer>
+<!--公共JS start-->
+<script th:src="@{webjars/jquery/3.2.1/jquery.min.js}"></script>
+<script th:src="@{webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+<script th:src="@{vendor/layer/layer.js}"></script>
+<script th:src="@{vendor/jquery-validation/jquery.validate.js}"></script>
+<script th:src="@{vendor/jquery-validation/localization/messages_zh.js}"></script>
+<!--公共JS end-->
+<!--子页面JS start-->
+<div layout:fragment="child-js"></div>
+<!--子页面JS end-->
+</body>
+</html>
