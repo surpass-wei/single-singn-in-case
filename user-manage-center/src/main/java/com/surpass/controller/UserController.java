@@ -20,11 +20,15 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 public class UserController {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Value("${default.password}")
+    @Value("${default.user.password}")
     private String defaultPassword;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "users/{username}/is-usable")
     public CommonRes checkUsername(@PathVariable String username) {
@@ -51,7 +55,7 @@ public class UserController {
                             @RequestParam String nickname,
                             @RequestParam(required = false) String password) {
         CommonRes commonRes = new CommonRes();
-        AddUserRes addUserRes = userService.addUser(username, nickname, password);
+        AddUserRes addUserRes = userService.addUser(username, password, nickname);
         commonRes.setSuccess(addUserRes.isSuccess());
         commonRes.setMsg(addUserRes.getMsg());
         commonRes.getData().put("userId", addUserRes.getUserId());
@@ -71,16 +75,16 @@ public class UserController {
     }
 
     @RequestMapping(value = "users/{id}/reset", method = RequestMethod.GET)
-        public CommonRes restUser(@PathVariable Long id) {
-            CommonRes commonRes = new CommonRes();
-            boolean isOk = userService.resetUser(id);
-            commonRes.setSuccess(isOk);
-            if (isOk) {
-                commonRes.setMsg("重置成功");
-            } else {
-                commonRes.setMsg("重置失败");
-            }
-            return commonRes;
+    public CommonRes restUser(@PathVariable Long id) {
+        CommonRes commonRes = new CommonRes();
+        boolean isOk = userService.resetUser(id);
+        commonRes.setSuccess(isOk);
+        if (isOk) {
+            commonRes.setMsg("重置成功");
+        } else {
+            commonRes.setMsg("重置失败");
+        }
+        return commonRes;
     }
 
     @RequestMapping(value = "users/{id}/freeze/{isFreeze}", method = RequestMethod.GET)

@@ -17,7 +17,8 @@ spring:
     cache: false
 
 default:
-  password: 123456
+  user:
+    password: 123456
 security:
   user:
     name: admin

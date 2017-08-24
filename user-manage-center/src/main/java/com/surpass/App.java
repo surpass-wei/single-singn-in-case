@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * 启动类
- *
+ * <p>
  * Created by surpass.wei@gmail.com on 2017/8/3.
  */
 @SpringBootApplication

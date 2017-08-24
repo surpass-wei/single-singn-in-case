@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 简单的请求响应格式
+ * 基本的请求响应对象
+ * <p>
  * Created by surpass.wei@gmail.com on 2016/12/20.
  */
 public class CommonRes implements Serializable {

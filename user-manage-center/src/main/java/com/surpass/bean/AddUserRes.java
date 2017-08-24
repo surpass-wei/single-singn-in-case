@@ -1,6 +1,8 @@
 package com.surpass.bean;
 
 /**
+ * 添加用户的请求响应对象
+ * <p>
  * Created by surpass.wei@gmail.com on 2017/8/15.
  */
 public class AddUserRes {

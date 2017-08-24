@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     /*字母开头，4~15个字符*/
     private static final String USERNAME_REGEX = "^[a-zA-z]\\w{3,15}$";
 
-    @Value("${default.password}")
+    @Value("${default.user.password}")
     private String defaultPassword;
 
     @Resource

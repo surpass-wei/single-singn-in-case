@@ -12,6 +12,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import javax.annotation.Resource;
 
 /**
+ * Endpoint: 相当于Controller
+ * <p>
  * Created by surpass.wei@gmail.com on 2017/8/14.
  */
 @Endpoint
