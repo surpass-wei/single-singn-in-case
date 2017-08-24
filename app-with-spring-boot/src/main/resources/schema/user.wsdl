@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.surpass.com/ws/bean" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.surpass.com/ws/bean" targetNamespace="http://www.surpass.com/ws/bean">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.surpass.com/ws/bean">
+    <!-- 添加用户 start -->
+    <xs:element name="AddUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+                <xs:element name="password" type="xs:string"/>
+                <xs:element name="nickname" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AddUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+                <xs:element name="msg" type="xs:string"/>
+                <xs:element name="userId" type="xs:long"/>
+                <xs:element name="encryptPassword" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- 添加用户 end -->
+    <!-- 检查用户名 start-->
+    <xs:element name="CheckUsernameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CheckUsernameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+                <xs:element name="msg" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- 检查用户名 end-->
+    <!-- 更新密码 start-->
+    <xs:element name="UpdatePasswordRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+                <xs:element name="password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="UpdatePasswordResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+                <xs:element name="msg" type="xs:string"/>
+                <xs:element name="encryptPassword" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- 更新密码 end-->
+    <!-- 更新昵称 start-->
+    <xs:element name="UpdateNicknameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+                <xs:element name="nickname" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="UpdateNicknameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+                <xs:element name="msg" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- 更新昵称 end-->
+    <!-- 更新登录时间为当前时间 start-->
+    <xs:element name="UpdateLoginTimeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="UpdateLoginTimeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+                <xs:element name="msg" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- 更新登录时间为当前时间 end-->
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="AddUserResponse">
+    <wsdl:part element="tns:AddUserResponse" name="AddUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CheckUsernameResponse">
+    <wsdl:part element="tns:CheckUsernameResponse" name="CheckUsernameResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdatePasswordRequest">
+    <wsdl:part element="tns:UpdatePasswordRequest" name="UpdatePasswordRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdatePasswordResponse">
+    <wsdl:part element="tns:UpdatePasswordResponse" name="UpdatePasswordResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateLoginTimeResponse">
+    <wsdl:part element="tns:UpdateLoginTimeResponse" name="UpdateLoginTimeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CheckUsernameRequest">
+    <wsdl:part element="tns:CheckUsernameRequest" name="CheckUsernameRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateNicknameResponse">
+    <wsdl:part element="tns:UpdateNicknameResponse" name="UpdateNicknameResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddUserRequest">
+    <wsdl:part element="tns:AddUserRequest" name="AddUserRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateNicknameRequest">
+    <wsdl:part element="tns:UpdateNicknameRequest" name="UpdateNicknameRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateLoginTimeRequest">
+    <wsdl:part element="tns:UpdateLoginTimeRequest" name="UpdateLoginTimeRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UserPort">
+    <wsdl:operation name="AddUser">
+      <wsdl:input message="tns:AddUserRequest" name="AddUserRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:AddUserResponse" name="AddUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUsername">
+      <wsdl:input message="tns:CheckUsernameRequest" name="CheckUsernameRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CheckUsernameResponse" name="CheckUsernameResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <wsdl:input message="tns:UpdatePasswordRequest" name="UpdatePasswordRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdatePasswordResponse" name="UpdatePasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLoginTime">
+      <wsdl:input message="tns:UpdateLoginTimeRequest" name="UpdateLoginTimeRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateLoginTimeResponse" name="UpdateLoginTimeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNickname">
+      <wsdl:input message="tns:UpdateNicknameRequest" name="UpdateNicknameRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateNicknameResponse" name="UpdateNicknameResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserPortSoap11" type="tns:UserPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUsername">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CheckUsernameRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CheckUsernameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdatePasswordRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdatePasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLoginTime">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateLoginTimeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateLoginTimeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNickname">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateNicknameRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateNicknameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserPortService">
+    <wsdl:port binding="tns:UserPortSoap11" name="UserPortSoap11">
+      <soap:address/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

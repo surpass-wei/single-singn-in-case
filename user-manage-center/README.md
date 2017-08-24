@@ -3,16 +3,11 @@
 > 2. 提供对外的web service接口
 
 ## 技术概览
-spring boot
-spring security
-jpa
-spring web service (spring ws)
-mysql
-thymeleaf
+`spring boot` `spring security` `jpa` `spring web service (spring ws)` `mysql` `thymeleaf`
 
 ## 快速开始
 1. 下载maven依赖
-2. 运行 com.surpass.App
+2. 运行 com.surpass.usermanagecenter.UserManageCenterApp
 3. 访问 http://localhost:9091
 4. 登录：admin/admin
 

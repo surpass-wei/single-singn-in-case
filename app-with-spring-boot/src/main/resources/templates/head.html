@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="header" style="background: skyblue">
+    <a href="/index" th:if="${user}" th:text="${user.name}"></a>
+    <a href="/index" th:if="${null == user}">登录</a>
+    <a href="/logout">登出</a>
+</div>
+</body>
+</html>

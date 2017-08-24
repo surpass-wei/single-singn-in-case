@@ -1,0 +1,39 @@
+# 服务器配置
+server:
+    port: 9092
+
+# 数据源配置
+spring:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        password: root
+        url: jdbc:mysql://127.0.0.1:3306/app_with_spring_boot?useUnicode=true&characterEncoding=UTF-8
+        username: root
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+
+# CAS 相关配置
+app:
+    login:
+        url: /login
+    logout:
+        url: /logout
+    server:
+        host:
+            url: http://localhost:9092
+cas:
+    server:
+        host:
+            login_url: ${cas.server.host.url}/login
+            logout_url: ${cas.server.host.url}/logout?service=${app.server.host.url}
+            url: https://server.mycas.com:8443/cas
+
+# web service 相关配置
+webservice:
+    password: admin
+    uri: http://localhost:9091/ws
+    user:
+        uri: ${webservice.uri}/user.wsdl
+    username: admin
