@@ -1,5 +1,7 @@
 package com.surpass.appwithspringboot.config.security;
 
+import com.surpass.appwithspringboot.entity.User;
+import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -7,31 +9,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * 结合本地User类和spring security的用户信息类
+ * <p>
  * Created by surpass.wei@gmail.com on 2017/7/26.
  */
-public class UserInfo implements UserDetails {
+public class UserInfo extends User implements UserDetails {
+
+    public UserInfo(User user) {
+        BeanUtils.copyProperties(user, this);
+    }
 
     private static final long serialVersionUID = -1041327031937199938L;
-
-    /**
-     * 用户ID
-     */
-    private Long id;
-
-    /**
-     * 用户名称
-     */
-    private String name;
-
-    /**
-     * 登录名称
-     */
-    private String username;
-
-    /**
-     * 登录密码
-     */
-    private String password;
 
     private boolean isAccountNonExpired = true;
 
@@ -41,45 +29,12 @@ public class UserInfo implements UserDetails {
 
     private boolean isEnabled = true;
 
-    private Set<SimpleGrantedAuthority> authorities = new HashSet<SimpleGrantedAuthority>();
+    private Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -119,25 +74,18 @@ public class UserInfo implements UserDetails {
 
     @Override
     public Set<SimpleGrantedAuthority> getAuthorities() {
+        //  todo: 根据数据库填充authoritySet
+        Set<SimpleGrantedAuthority> authoritySet = new HashSet<>();
+
         return authorities;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
     }
 
     public void setAuthorities(Set<SimpleGrantedAuthority> authorities) {
         this.authorities = authorities;
-    }
-
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", isAccountNonExpired=" + isAccountNonExpired +
-                ", isAccountNonLocked=" + isAccountNonLocked +
-                ", isCredentialsNonExpired=" + isCredentialsNonExpired +
-                ", isEnabled=" + isEnabled +
-                ", authorities=" + authorities +
-                '}';
     }
 }

@@ -6,13 +6,11 @@ import com.surpass.usermanagecenter.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import javax.jws.WebService;
 import java.util.List;
 
 /**
  * Created by surpass.wei@gmail.com on 2017/8/3.
  */
-@WebService
 public interface UserService {
 
     Long save(User user);

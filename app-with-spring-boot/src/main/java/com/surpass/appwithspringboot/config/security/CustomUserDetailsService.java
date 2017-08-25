@@ -1,6 +1,7 @@
 package com.surpass.appwithspringboot.config.security;
 
-import com.surpass.appwithspringboot.dexcoder.config.WsClient;
+import com.surpass.appwithspringboot.entity.User;
+import com.surpass.appwithspringboot.service.UserService;
 import org.springframework.security.cas.authentication.CasAssertionAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
@@ -22,14 +23,12 @@ import java.util.Set;
 public class CustomUserDetailsService implements AuthenticationUserDetailsService<CasAssertionAuthenticationToken> {
 
     @Resource
-    private WsClient wsClient;
+    private UserService userService;
+
     @Override
     public UserDetails loadUserDetails(CasAssertionAuthenticationToken token) throws UsernameNotFoundException {
-        System.out.println("当前的用户名是：" + token.getName());
-        /*这里我为了方便，就直接返回一个用户信息，实际当中这里修改为查询数据库或者调用服务什么的来获取用户信息*/
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUsername(token.getName());
-        userInfo.setName("管理员");
+        User user = userService.findByUsername(token.getName());
+        UserInfo userInfo = new UserInfo(user);
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
         authorities.add(new SimpleGrantedAuthority("user_read"));

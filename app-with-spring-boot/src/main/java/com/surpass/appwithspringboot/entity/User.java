@@ -24,6 +24,8 @@ public class User {
 
     private String gender;
 
+    private String authority;
+
     public Long getId() {
         return id;
     }
@@ -54,5 +56,13 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
 }
